@@ -10,7 +10,7 @@
     </head>
     <body>
         <div id="app">
-            <example-component/>
+            <app/>
         </div>
         <script src="{{mix('js/app.js')}}"></script>
     </body>

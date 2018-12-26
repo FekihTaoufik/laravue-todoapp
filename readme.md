@@ -1,12 +1,12 @@
-# Laravue
-Full stack laravel and vuejs articles app with bootstrapCSS.
+# Laravue TodoApp
+A Todo App build on Laravel and Vuejs using BootstrapCSS.
 
 ### Running this app
-- clone this repo or just zip from the above green button.
+- clone this repo or just the zip from the above green button.
 
 - Make sure you have [composer](https://getcomposer.org/) installed for laravel and [nodejs](https://nodejs.org/en/) for npm.
 
-- Rename .env.example to .env and add your database and mail credentials.
+- Rename **.env.example** to **.env** and add your database and mail credentials.
 
 - Install laravel dependencies.
 ```bash
@@ -22,6 +22,7 @@ Full stack laravel and vuejs articles app with bootstrapCSS.
 ```bash
     php artisan key:generate
 ```
+
 - create tables.
 ```bash
 	php artisan migrate
@@ -34,7 +35,7 @@ Full stack laravel and vuejs articles app with bootstrapCSS.
 
 - or replace **dev** with **watch**. if you want it to keep watching for changes.
 
-- you can create a virtual host or just run this command to run dev server
+- you can create a virtual host with Apache or just run this command to run dev server (PHP's default server)
 ```bash
     php artisan serve
 ```
