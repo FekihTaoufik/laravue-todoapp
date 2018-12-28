@@ -39,3 +39,8 @@ A Todo App build on Laravel and Vuejs using BootstrapCSS.
 ```bash
     php artisan serve
 ```
+
+## Features
+- Todos CRUD (Create, Read, Update, and Delete).
+- Simple Pagination.
+- Validation.
