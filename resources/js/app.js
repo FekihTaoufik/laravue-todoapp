@@ -15,6 +15,17 @@ Vue.use(VueRouter);
 
 import router from './components/router/Index.js'
 
+//flash messages
+import VueFlashMessage from 'vue-flash-message';
+require('vue-flash-message/dist/vue-flash-message.min.css');
+
+Vue.use(VueFlashMessage,{
+	messageOptions: {
+		timeout: 3500,
+		pauseOnInteract: true
+	}
+});
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

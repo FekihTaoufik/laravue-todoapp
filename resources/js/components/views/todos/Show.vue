@@ -45,7 +45,8 @@
 					.delete(`/api/todos/${this.todo.id}`)
 					.then(res => {
 						if(res.status == 200){
-							this.$router.push('/todos')	
+							this.flashSuccess(res.data.msg)
+							this.$router.push('/todos')
 						}
 						
 					})

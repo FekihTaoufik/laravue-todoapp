@@ -60,7 +60,11 @@
 					})
 					.then(res => {
 						// console.log(res)
-						this.$router.push(`/todos/${this.todo.id}`)
+						if(res.status == 200){
+							this.flashSuccess('Todo Updated!')
+							this.$router.push(`/todos/${this.todo.id}`)	
+						}
+						
 					})
 					.catch(err => {
 						console.log(err.response)

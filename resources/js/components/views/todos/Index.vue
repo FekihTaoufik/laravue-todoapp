@@ -1,6 +1,7 @@
 <template>
 	<div>
 		<h2 class="text-center my-4">All Todos</h2>
+		<Loader v-bind:isLoading="isLoading"></Loader>
 		<div class="card my-3" v-for="todo in todos">
 			<div class="card-body">
 				<h5 class="card-title">{{todo.name}}</h5>
@@ -32,7 +33,11 @@
 </template>
 
 <script>
+	import Loader from '../includes/Loader'
 	export default {
+		components: {
+			Loader
+		},
 		created: function() {
 			this.getTodos()
 		},
@@ -44,20 +49,27 @@
 					prevPageUrl: '',
 					nextPageUrl: '',
 					lastPage: 1
-				}
+				},
+				isLoading: false
 			}
 		},
 		methods: {
 			getTodos(paginationUrl){
+				this.isLoading = true
 				const url = paginationUrl || '/api/todos'
 				axios.get(url)
 					.then(res => {
+						this.isLoading = false
 						// console.log(res.data)
 						let todos = res.data.todos
 						this.todos = todos.data
 						this.paginate(todos)
 					})
-					.catch(err => console.error(err))
+					.catch(err => {
+						console.error(err)
+						this.isLoading = false
+						this.flashError('Something went wrong! Refresh the page to load todos again.')
+					})
 			},
 			paginate(meta){
 				this.pagination.currentPage = meta.current_page

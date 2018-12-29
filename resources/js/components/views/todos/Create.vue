@@ -44,7 +44,10 @@
 					})
 					.then(res => {
 						// console.log(res)
-						this.$router.push('/todos')
+						if(res.status == 201){
+							this.flashSuccess(res.data.msg)
+							this.$router.push('/todos')
+						}
 					})
 					.catch(err => {
 						console.log(err.response)

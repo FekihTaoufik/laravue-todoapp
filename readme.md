@@ -1,12 +1,12 @@
 # Laravue TodoApp
-A Todo App build on Laravel and Vuejs using BootstrapCSS.
+A Simple Todo App build on Laravel and Vuejs using BootstrapCSS.
 
 ### Running this app
 - clone this repo or just the zip from the above green button.
 
 - Make sure you have [composer](https://getcomposer.org/) installed for laravel and [nodejs](https://nodejs.org/en/) for npm.
 
-- Rename **.env.example** to **.env** and add your database and mail credentials.
+- Rename **.env.example** to **.env** and add your database.
 
 - Install laravel dependencies.
 ```bash
@@ -28,14 +28,14 @@ A Todo App build on Laravel and Vuejs using BootstrapCSS.
 	php artisan migrate
 ```
 
-- compile javascript assets
+- compile javascript assets.
 ```bash
     npm run dev
 ```
 
 - or replace **dev** with **watch**. if you want it to keep watching for changes.
 
-- you can create a virtual host with Apache or just run this command to run dev server (PHP's default server)
+- you can create a virtual host with Apache or just run this command to run dev server (PHP's default server).
 ```bash
     php artisan serve
 ```
@@ -44,3 +44,5 @@ A Todo App build on Laravel and Vuejs using BootstrapCSS.
 - Todos CRUD (Create, Read, Update, and Delete).
 - Simple Pagination.
 - Validation.
+- Flash Messages with [vue-flash-messages](https://github.com/keen-on-design/vue-flash-message).
+- Display Loader before fetching todos.
