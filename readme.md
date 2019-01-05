@@ -6,7 +6,7 @@ A Simple Todo App build on Laravel and Vuejs including BootstrapCSS.
 
 - Make sure you have [composer](https://getcomposer.org/) installed for laravel and [nodejs](https://nodejs.org/en/) for npm.
 
-- Rename **.env.example** to **.env** and add your database.
+- Rename **.env.example** to **.env** and add your database and mail credentials.
 
 - Install laravel dependencies.
 ```bash
@@ -52,3 +52,4 @@ A Simple Todo App build on Laravel and Vuejs including BootstrapCSS.
 - Flash Messages with [vue-flash-message](https://github.com/keen-on-design/vue-flash-message).
 - Display Loader before fetching todos.
 - JWT API Authentication with [auth-jwt](https://github.com/tymondesigns/jwt-auth).
+- Reset Password Email.

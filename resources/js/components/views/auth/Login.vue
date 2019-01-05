@@ -14,6 +14,7 @@
 					<div class="invalid-feedback" v-for="password in errors.password">{{password}}</div>
 				</div>
 				<button type="submit" class="btn btn-outline-primary">Login</button>
+				<router-link class="btn btn-outline-success" :to="{name: 'password.email'}">Forgot Password</router-link>
 			</form>
 		</div>
 	</div>
@@ -45,11 +46,11 @@
 					.then(res => {
 						store.dispatch('AUTH_LOGIN',res.data)
 						this.$router.push({name: 'user.index'})
-						this.success('You are logged in!','success')
+						this.flashSuccess('You are logged in!')
 						
 					})
 					.catch(err => {
-						console.log(err)
+						console.log(err.response)
 						if(err.response.status == 422){
 							let errors = err.response.data.errors
 							this.errors.email = errors.email || []

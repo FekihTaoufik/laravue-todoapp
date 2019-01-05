@@ -30,3 +30,7 @@ Route::post('/logout','Auth\LoginController@logout')->middleware('jwt.verify');
 
 //get authenticated user
 Route::get('/user','Auth\LoginController@getAuthenticatedUser')->middleware('jwt.verify');
+
+Route::post('/password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+
+Route::post('/password/reset', 'Auth\ResetPasswordController@reset')->name('password.reset');

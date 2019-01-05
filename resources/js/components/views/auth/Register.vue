@@ -54,10 +54,10 @@
 						console.log(res)
 						store.dispatch('AUTH_LOGIN',res.data)
 						this.$router.push({name: 'user.index'})
-						this.success('Registration Successful!','success')
+						this.flashSuccess('Registration Successful!')
 					})
 					.catch(err => {
-						console.log(err)
+						console.log(err.response)
 						if(err.response.status == 422){
 							let errors = err.response.data.errors
 							this.errors.name = errors.name || []

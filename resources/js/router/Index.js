@@ -6,6 +6,8 @@ import TodoEdit from '../components/views/todos/Edit'
 import TodoCreate from '../components/views/todos/Create'
 import Login from '../components/views/auth/Login'
 import Register from '../components/views/auth/Register'
+import Email from '../components/views/auth/passwords/Email'
+import ResetPassword from '../components/views/auth/passwords/ResetPassword'
 import Dashboard from '../components/views/dashboard/Index'
 import store from '../store/Index'
 
@@ -72,6 +74,18 @@ const routes = [
 		path: '/user',
 		component: Dashboard,
 		beforeEnter: authenticated
+	},
+	{
+		name: 'passwod.reset',
+		path: '/password/reset/:token',
+		component: ResetPassword,
+		beforeEnter: notAuthenticated
+	},
+	{
+		name: 'password.email',
+		path: '/password/email',
+		component: Email,
+		beforeEnter: notAuthenticated
 	}
 ];
 
