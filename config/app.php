@@ -166,6 +166,12 @@ return [
          * Package Service Providers...
          */
 
+        /**
+         * JWT Authentication
+         * https://github.com/tymondesigns/jwt-auth
+         */
+        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
+
         /*
          * Application Service Providers...
          */

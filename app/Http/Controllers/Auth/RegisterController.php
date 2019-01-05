@@ -2,71 +2,69 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\User;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Hash;
+use JWTAuth;
+use App\User;
+use Exception;
 
 class RegisterController extends Controller
 {
-    /*
-    |--------------------------------------------------------------------------
-    | Register Controller
-    |--------------------------------------------------------------------------
-    |
-    | This controller handles the registration of new users as well as their
-    | validation and creation. By default this controller uses a trait to
-    | provide this functionality without requiring any additional code.
-    |
-    */
-
-    use RegistersUsers;
 
     /**
-     * Where to redirect users after registration.
-     *
-     * @var string
+     * Register users
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected $redirectTo = '/home';
+    public function register(Request $request){
+        
+        $this->validateRequest($request);
+        
+        try{
+            
+            //Create User
+            $user = $this->createUser($request);
+            
+            //authenticate the user
+            $token = JWTAuth::fromUser($user);
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('guest');
+            //return the auth token
+            return response()->json($token);
+
+        }catch(Exception $e){
+        
+            return response()->json($e);
+        
+        }
     }
 
     /**
-     * Get a validator for an incoming registration request.
-     *
-     * @param  array  $data
-     * @return \Illuminate\Contracts\Validation\Validator
+     * Validate the request.
+     * 
+     * @param \Illuminate\Http\Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
-    protected function validator(array $data)
-    {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:6', 'confirmed'],
+    private function validateRequest(Request $request){
+        $this->validate($request,[
+            'name'  => 'required|string|min:3|max:255',
+            'email' => 'required|email|unique:users|max:255',
+            'password' => 'required|string|min:5|max:255'
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create user
      *
-     * @param  array  $data
+     * @param \Illuminate\Http\Request $request
      * @return \App\User
      */
-    protected function create(array $data)
-    {
+    private function createUser(Request $request){
         return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password)
         ]);
     }
 }

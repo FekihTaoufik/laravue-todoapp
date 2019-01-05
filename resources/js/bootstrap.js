@@ -38,6 +38,12 @@ if (token) {
     console.error('CSRF token not found: https://laravel.com/docs/csrf#csrf-x-csrf-token');
 }
 
+//set the default authorization header if we have a token in the local storage
+const userToken = localStorage.getItem('token');
+if(userToken){
+	window.axios.defaults.headers.common['Authorization'] = 'Bearer ' + userToken;
+}
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

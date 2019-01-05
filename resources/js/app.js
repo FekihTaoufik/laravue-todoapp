@@ -13,7 +13,7 @@ window.VueRouter = require('vue-router').default;
 
 Vue.use(VueRouter);
 
-import router from './components/router/Index.js'
+import router from './router/Index'
 
 //flash messages
 import VueFlashMessage from 'vue-flash-message';
@@ -25,6 +25,9 @@ Vue.use(VueFlashMessage,{
 		pauseOnInteract: true
 	}
 });
+
+// import Vuex store
+import store from './store/Index'
 
 /**
  * The following block of code may be used to automatically register your
@@ -48,5 +51,6 @@ const App = Vue.component('app', require('./components/App.vue').default);
 const app = new Vue({
     el: '#app',
     components: { App },
-    router
+    router,
+    store
 });

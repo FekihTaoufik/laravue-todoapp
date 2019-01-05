@@ -1,5 +1,5 @@
 # Laravue TodoApp
-A Simple Todo App build on Laravel and Vuejs using BootstrapCSS.
+A Simple Todo App build on Laravel and Vuejs including BootstrapCSS.
 
 ### Running this app
 - clone this repo or just the zip from the above green button.
@@ -35,6 +35,11 @@ A Simple Todo App build on Laravel and Vuejs using BootstrapCSS.
 
 - or replace **dev** with **watch**. if you want it to keep watching for changes.
 
+- Generate JWT Secret for API authentication.
+```bash
+    php artisan jwt:secret
+```
+
 - you can create a virtual host with Apache or just run this command to run dev server (PHP's default server).
 ```bash
     php artisan serve
@@ -44,5 +49,6 @@ A Simple Todo App build on Laravel and Vuejs using BootstrapCSS.
 - Todos CRUD (Create, Read, Update, and Delete).
 - Simple Pagination.
 - Validation.
-- Flash Messages with [vue-flash-messages](https://github.com/keen-on-design/vue-flash-message).
+- Flash Messages with [vue-flash-message](https://github.com/keen-on-design/vue-flash-message).
 - Display Loader before fetching todos.
+- JWT API Authentication with [auth-jwt](https://github.com/tymondesigns/jwt-auth).
