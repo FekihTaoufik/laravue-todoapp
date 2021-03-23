@@ -1,0 +1,14 @@
+version: '3'
+
+services:
+  db:
+    image: mysql
+    environment: 
+      - DB_PASSWORD=root
+    ports:
+      - "8001:5432" 
+  web:
+    build: .
+    ports:
+      - "8000:8000"
+    
